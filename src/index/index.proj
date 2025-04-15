@@ -136,13 +136,13 @@
 
   <Target Name="FindBinlogs" DependsOnTargets="ResolveHashV1" Outputs="%(ClonedRepository.Identity)">
     <ItemGroup>
-      <BinlogToIndex Include="%(ClonedRepository.LocalPath)\**\*.binlog"/>
+      <BinlogToIndex Include="%(ClonedRepository.LocalPath)\**\*.binlog" Condition="'@(ClonedRepository)' != ''"/>
     </ItemGroup>
   </Target>
 
   <Target Name="FindSolutions" DependsOnTargets="ResolveHashV2" Outputs="%(ClonedRepositoryV2.Identity)">
     <ItemGroup>
-      <SolutionToIndex Include="%(ClonedRepositoryV2.ExtractPath)\**\*.sln"/>
+      <SolutionToIndex Include="%(ClonedRepositoryV2.ExtractPath)\**\*.sln" Condition="'@(ClonedRepositoryV2)' != ''"/>
     </ItemGroup>
   </Target>
 
